@@ -122,6 +122,34 @@ var VisualizerUI = (function($, window, undefined) {
       /* END collection browser sorting - related */
 
 
+
+        $('#ocrfiletypedatasubmit').click(function() {
+
+            dispatcher.post('ajax', [{
+              action: 'logOcrFileTypeDetails',
+              collection: $('#collection').val(),
+              document: $('#document').val(),
+              ocrOutputResult: $("input[name='ocrOutputResult']:checked").val(),
+              fileType: $("input[name='fileType']:checked").val(),
+              lossType: $("input[name='lossType']:checked").val()
+            },
+            function(response) {
+
+             if (response.exception) {
+                alert("Something went wrong!!");
+              } else if (!response.status) {
+                alert("Something went wrong, empty response!!");;
+              } else if(response.status == 'true'){
+
+                alert("Recorded succesfully");
+
+              }
+
+            }]);
+
+        });
+
+
       /* START message display - related */
 
       var showPullupTrigger = function() {

@@ -136,7 +136,53 @@
         </div>
       </div>
     </div>
-    <div id="svg"></div>
+    <!--<div id="svg"></div>-->
+
+    <div style="width: 100%; height: 800px">
+   <div id="svg" style="float:left; width: 50%">
+   </div>
+   <div id='pdf' style="float:right;">
+   </div>
+      <object id="pdfcontent" data="" type="application/pdf" width="45%" height="100%"></object>>
+     <!-- <iframe id="pdfcontent" type="application/pdf"></iframe>-->
+
+    </div>
+    <div style="clear:both"></div>
+
+    <div id="ocrfiletypeform">
+      <H1><b>OCR, File and Loss Type</b></H1>
+      <form id="ocrfiletype">
+
+        <fieldset id="collection_form_text">
+        <legend>Collection</legend>
+        <input id="collection" name="collection" class="borderless"/>
+      </fieldset>
+      <fieldset id="document_form_text">
+        <legend>Document</legend>
+        <input id="document" name="document" class="borderless"/>
+      </fieldset>
+      <fieldset id="ocroutput_form_text">
+        <legend>Ocr output</legend>
+        <input type="radio" name="ocrOutputResult" value="true"/> True<br/>
+        <input type="radio" name="ocrOutputResult" value="false"/> False<br/>
+      </fieldset>
+      <fieldset id="filetype_form_text">
+        <legend>File Type</legend>
+        <input type="radio" name="fileType" value="pdf"/> PDF<br/>
+        <input type="radio" name="fileType" value="docx"/> DOCX<br/>
+        <input type="radio" name="fileType" value="ppt"/> PPT<br/>
+      </fieldset>
+      <fieldset id="lossType_form_text">
+        <legend>Loss Type</legend>
+        <input type="radio" name="lossType" value="text"/> Text<br/>
+        <input type="radio" name="lossType" value="table"/> Table<br/>
+        <input type="radio" name="lossType" value="nil"/> Nil<br/>
+        <input type="radio" name="lossType" value="notfound"/> Not Found<br/>
+      </fieldset>
+        <input type="button" id= "ocrfiletypedatasubmit" name="ocrfiletypedatasubmit" value="submit"/>
+      </form>
+
+    </div>
     <form id="import_form" class="dialog" title="Import">
       <fieldset id="import_form_docid">
         <legend>Document ID</legend>

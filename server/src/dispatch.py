@@ -38,6 +38,8 @@ from tag import tag
 from delete import delete_document, delete_collection
 from norm import norm_get_name, norm_search, norm_get_data
 
+from ocrfiletype import test,logOcrFileTypeDetails, getOcrFileTypeDetails, getPdfEncoded
+
 # no-op function that can be invoked by client to log a user action
 def logging_no_op(collection, document, log):
     # need to return a dictionary
@@ -102,6 +104,11 @@ DISPATCHER = {
         # Visualisation support
         'getConfiguration': get_configuration,
         'convert': convert,
+        'test': test,
+        'logOcrFileTypeDetails': logOcrFileTypeDetails,
+        'getOcrFileTypeDetails': getOcrFileTypeDetails,
+        'getPdfEncoded': getPdfEncoded
+
        }
 
 # Actions that correspond to annotation functionality

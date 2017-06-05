@@ -302,6 +302,9 @@ var Visualizer = (function($, window, undefined) {
       }
       var that = this;
 
+     var $ocrFormDiv = $('#ocrfiletypeform');
+     var $pdfDiv = $('#pdf');
+
       // OPTIONS
       var roundCoordinates = true; // try to have exact pixel offsets
       var boxTextMargin = { x: 0, y: 1.5 }; // effect is inverse of "margin" for some reason
@@ -403,6 +406,9 @@ var Visualizer = (function($, window, undefined) {
         sourceData = null;
         svg.clear();
         $svgDiv.hide();
+        $ocrFormDiv.hide();
+        $pdfDiv.hide();
+
       };
 
       var setMarked = function(markedType) {
@@ -3063,6 +3069,55 @@ Util.profileReport();
       };
 
       var renderDocument = function() {
+
+       $ocrFormDiv.show();
+       $pdfDiv.show();
+
+        $('#collection').val(coll);
+
+           $('#document').val(doc);
+
+
+           /* dispatcher.post('ajax', [{
+              action: 'getOcrFileTypeDetails',
+              collection: $('#collection').val(),
+              document: $('#document').val()
+            },
+            function(response) {
+            //alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
+             if (response.exception) {
+                alert("Something went wrong!!");
+              } else {
+                alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
+              $("input[name='ocrOutputResult']").val(response.ocrOutputResult);
+              $("input[name='fileType']").val(response.fileType);
+              $("input[name='lossType']").val(response.lossType);
+                }
+            }]);*/
+
+           dispatcher.post('ajax', [{
+              action: 'getPdfEncoded',
+              collection: $('#collection').val(),
+              document: $('#document').val() +'.pdf'
+            },
+            function(response) {
+
+             if (response.exception) {
+                alert("Something went wrong in getting pdf!!");
+              } else if (!response.encodedPdf) {
+                alert("Something went wrong, empty response!!");
+              } else {
+
+                content = 'data:application/pdf;base64,'+ response.encodedPdf;
+
+               // alert(content);
+                $('#pdfcontent').attr("data",content);
+
+              }
+
+            }]);
+
+
         Util.profileStart('invoke getDocument');
         dispatcher.post('ajax', [{
             action: 'getDocument',
@@ -3448,6 +3503,8 @@ Util.profileStart('before render');
         // do not reload while the user is in the dialog
         return !drawing;
       };
+
+
 
       Util.loadFonts(webFontURLs, dispatcher);
 
