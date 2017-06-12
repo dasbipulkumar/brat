@@ -244,10 +244,6 @@ class BratHTTPRequestHandler(SimpleHTTPRequestHandler):
 
         return self.permissions.allow(path)
 
-    def list_directory(self, path):
-        """Override SimpleHTTPRequestHandler.list_directory()"""
-        # TODO: permissions for directory listings
-        self.send_error(403)
 
     def do_POST(self):
         """Serve a POST request. Only implemented for brat server."""
@@ -317,6 +313,7 @@ server is experimental and should not be run as administrator.
         print >> sys.stderr, "Server error", e
         raise
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))

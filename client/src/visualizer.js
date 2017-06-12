@@ -3095,7 +3095,7 @@ Util.profileReport();
                 }
             }]);*/
 
-           dispatcher.post('ajax', [{
+           /*dispatcher.post('ajax', [{
               action: 'getPdfEncoded',
               collection: $('#collection').val(),
               document: $('#document').val() +'.pdf'
@@ -3111,12 +3111,12 @@ Util.profileReport();
                 content = 'data:application/pdf;base64,'+ response.encodedPdf;
 
                // alert(content);
-                $('#pdfcontent').attr("data",content);
+                $('#pdfcontent').attr("src",content);
 
               }
 
-            }]);
-
+            }]);*/
+            $('#pdfcontent').attr("src",'/data'+$('#collection').val()+'source/'+ $('#document').val() +'.pdf');
 
         Util.profileStart('invoke getDocument');
         dispatcher.post('ajax', [{
