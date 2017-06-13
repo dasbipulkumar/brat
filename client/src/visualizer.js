@@ -3078,7 +3078,7 @@ Util.profileReport();
            $('#document').val(doc);
 
 
-           /* dispatcher.post('ajax', [{
+            dispatcher.post('ajax', [{
               action: 'getOcrFileTypeDetails',
               collection: $('#collection').val(),
               document: $('#document').val()
@@ -3088,12 +3088,39 @@ Util.profileReport();
              if (response.exception) {
                 alert("Something went wrong!!");
               } else {
-                alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
-              $("input[name='ocrOutputResult']").val(response.ocrOutputResult);
-              $("input[name='fileType']").val(response.fileType);
-              $("input[name='lossType']").val(response.lossType);
+               // alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
+              //$("input[name='ocrOutputResult']").val(response.ocrOutputResult);
+
+              if(response.ocrOutputResult== undefined || response.ocrOutputResult=='' ||
+                   response.fileType== undefined || response.fileType=='' ||
+                      response.lossType== undefined || response.lossType==''){
+              $('#ocrfiletyperecordstatus').text("NOT RECORDED!!!!");
+              }else{
+                $('#ocrfiletyperecordstatus').text("RECORDED!!!!");
+              }
+
+              if(response.ocrOutputResult== undefined || response.ocrOutputResult==''){
+                $('input[name="ocrOutputResult"]').prop('checked', false);
+              }
+              else{
+                $('input[name="ocrOutputResult"][value="' + response.ocrOutputResult.toString() + '"]').prop("checked", true);
+              }
+              //$("input[name='fileType']").val(response.fileType);
+              if(response.fileType== undefined || response.fileType==''){
+                $('input[name="fileType"]').prop('checked', false);
+              }
+              else{
+              $('input[name="fileType"][value="' + response.fileType.toString() + '"]').prop("checked", true);
+              }
+              //$("input[name='lossType']").val(response.lossType);
+              if(response.lossType== undefined || response.lossType==''){
+                $('input[name="lossType"]').prop('checked', false);
+              }
+              else{
+              $('input[name="lossType"][value="' + response.lossType.toString() + '"]').prop("checked", true);
+              }
                 }
-            }]);*/
+            }]);
 
            /*dispatcher.post('ajax', [{
               action: 'getPdfEncoded',
