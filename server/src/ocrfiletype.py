@@ -9,7 +9,7 @@ def test(collection, document):
     return {"key": 'hello' + ' ' + collection + ' ' + document}
 
 
-def logOcrFileTypeDetails(collection, document, ocrOutputResult, fileType, lossType):
+def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationOutputResult, extractionOutputResult, fileType, lossType):
     path = path_join(real_directory(collection), 'qafunnelocrfiledetails')
     if not os.path.exists(path):
         os.mknod(path)
@@ -23,8 +23,8 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, fileType, lossT
         if docname == document:
             searchFlag = True
             print "%s" % (
-                json.dumps({"document": document, "ocrOutputResult": ocrOutputResult, "fileType": fileType,
-                            "lossType": lossType}) + '\n'),
+                json.dumps({"document": document, "ocrOutputResult": ocrOutputResult, "identificationOutputResult": identificationOutputResult,
+                            "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n'),
         else:
             print "%s" % (line),
 
@@ -33,8 +33,8 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, fileType, lossT
     if not searchFlag:
         with open(path, 'a') as file:
             file.write(json.dumps(
-                {"document": document, "ocrOutputResult": ocrOutputResult, "fileType": fileType,
-                 "lossType": lossType}) + '\n')
+                {"document": document, "ocrOutputResult": ocrOutputResult,"identificationOutputResult": identificationOutputResult,
+                            "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n')
             file.close
 
     return {"status": 'true'}

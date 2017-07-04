@@ -130,6 +130,8 @@ var VisualizerUI = (function($, window, undefined) {
               collection: $('#collection').val(),
               document: $('#document').val(),
               ocrOutputResult: $("input[name='ocrOutputResult']:checked").val(),
+              identificationOutputResult: $("input[name='identificationOutputResult']:checked").val(),
+              extractionOutputResult: $("input[name='extractionOutputResult']:checked").val(),
               fileType: $("input[name='fileType']:checked").val(),
               lossType: $("input[name='lossType']:checked").val()
             },
