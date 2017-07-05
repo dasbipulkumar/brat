@@ -51,6 +51,8 @@ def getOcrFileTypeDetails(collection, document):
 
         if docname == document:
             returnMap = {"status": True, "document": document, "ocrOutputResult": loaded_r['ocrOutputResult'],
+                         "identificationOutputResult": loaded_r['identificationOutputResult'],
+                         "extractionOutputResult": loaded_r['extractionOutputResult'],
                          "fileType": loaded_r['fileType'], "lossType": loaded_r['lossType']}
 
     #fileinput.close()
