@@ -3106,18 +3106,18 @@ Util.profileReport();
                 $('input[name="ocrOutputResult"][value="' + response.ocrOutputResult.toString() + '"]').prop("checked", true);
               }
 
-              if(response.ocrOutputResult== undefined || response.ocrOutputResult==''){
+              if(response.identificationOutputResult== undefined || response.identificationOutputResult==''){
                 $('input[name="identificationOutputResult"]').prop('checked', false);
               }
               else{
-                $('input[name="identificationOutputResult"][value="' + response.ocrOutputResult.toString() + '"]').prop("checked", true);
+                $('input[name="identificationOutputResult"][value="' + response.identificationOutputResult.toString() + '"]').prop("checked", true);
               }
 
-              if(response.ocrOutputResult== undefined || response.ocrOutputResult==''){
+              if(response.extractionOutputResult== undefined || response.extractionOutputResult==''){
                 $('input[name="extractionOutputResult"]').prop('checked', false);
               }
               else{
-                $('input[name="extractionOutputResult"][value="' + response.ocrOutputResult.toString() + '"]').prop("checked", true);
+                $('input[name="extractionOutputResult"][value="' + response.extractionOutputResult.toString() + '"]').prop("checked", true);
               }
               //$("input[name='fileType']").val(response.fileType);
               if(response.fileType== undefined || response.fileType==''){
