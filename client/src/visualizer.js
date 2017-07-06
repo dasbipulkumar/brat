@@ -3113,6 +3113,13 @@ Util.profileReport();
                 $('input[name="identificationOutputResult"][value="' + response.identificationOutputResult.toString() + '"]').prop("checked", true);
               }
 
+              if(response.identificationBoundaryOutputResult== undefined || response.identificationBoundaryOutputResult==''){
+                $('input[name="identificationBoundaryOutputResult"]').prop('checked', false);
+              }
+              else{
+                $('input[name="identificationBoundaryOutputResult"][value="' + response.identificationBoundaryOutputResult.toString() + '"]').prop("checked", true);
+              }
+
               if(response.extractionOutputResult== undefined || response.extractionOutputResult==''){
                 $('input[name="extractionOutputResult"]').prop('checked', false);
               }
