@@ -9,7 +9,8 @@ def test(collection, document):
     return {"key": 'hello' + ' ' + collection + ' ' + document}
 
 
-def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationOutputResult, extractionOutputResult, fileType, lossType):
+def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationOutputResult,
+                          identificationBoundaryOutputResult, extractionOutputResult, fileType, lossType):
     path = path_join(real_directory(collection), 'qafunnelocrfiledetails')
     if not os.path.exists(path):
         os.mknod(path)
@@ -24,7 +25,7 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationO
             searchFlag = True
             print "%s" % (
                 json.dumps({"document": document, "ocrOutputResult": ocrOutputResult, "identificationOutputResult": identificationOutputResult,
-                            "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n'),
+                            "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n'),
         else:
             print "%s" % (line),
 
@@ -34,7 +35,7 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationO
         with open(path, 'a') as file:
             file.write(json.dumps(
                 {"document": document, "ocrOutputResult": ocrOutputResult,"identificationOutputResult": identificationOutputResult,
-                            "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n')
+                             "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n')
             file.close
 
     return {"status": 'true'}
@@ -52,6 +53,7 @@ def getOcrFileTypeDetails(collection, document):
         if docname == document:
             returnMap = {"status": True, "document": document, "ocrOutputResult": loaded_r['ocrOutputResult'],
                          "identificationOutputResult": loaded_r['identificationOutputResult'],
+                         "identificationBoundaryOutputResult": loaded_r['identificationBoundaryOutputResult'],
                          "extractionOutputResult": loaded_r['extractionOutputResult'],
                          "fileType": loaded_r['fileType'], "lossType": loaded_r['lossType']}
 

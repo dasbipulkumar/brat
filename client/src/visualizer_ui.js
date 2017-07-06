@@ -131,6 +131,7 @@ var VisualizerUI = (function($, window, undefined) {
               document: $('#document').val(),
               ocrOutputResult: $("input[name='ocrOutputResult']:checked").val(),
               identificationOutputResult: $("input[name='identificationOutputResult']:checked").val(),
+              identificationBoundaryOutputResult: $("input[name='identificationBoundaryOutputResult']:checked").val(),
               extractionOutputResult: $("input[name='extractionOutputResult']:checked").val(),
               fileType: $("input[name='fileType']:checked").val(),
               lossType: $("input[name='lossType']:checked").val()
