@@ -3086,7 +3086,7 @@ Util.profileReport();
             function(response) {
             //alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
              if (response.exception) {
-                alert("Something went wrong!!");
+                console.log("Something went wrong!!");
               } else {
                // alert(response.ocrOutputResult + ' ' + response.fileType + ' ' + response.lossType);
               //$("input[name='ocrOutputResult']").val(response.ocrOutputResult);
@@ -3434,9 +3434,9 @@ Util.profileStart('before render');
           'keydown', 'keypress',
           'touchstart', 'touchend'
       ]);
-      registerHandlers($(window), [
-          'resize'
-      ]);
+      //registerHandlers($(window), [
+      //    'resize'
+      //]);
 
       // create the svg wrapper
       $svgDiv.svg({

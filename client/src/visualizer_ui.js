@@ -139,12 +139,12 @@ var VisualizerUI = (function($, window, undefined) {
             function(response) {
 
              if (response.exception) {
-                alert("Something went wrong!!");
+                console.log("Something went wrong!!");
               } else if (!response.status) {
-                alert("Something went wrong, empty response!!");;
+                console.log("Something went wrong, empty response!!");;
               } else if(response.status == 'true'){
 
-                alert("Recorded succesfully");
+                console.log("Recorded succesfully");
 
               }
 
@@ -1529,12 +1529,12 @@ var VisualizerUI = (function($, window, undefined) {
               currentForm.trigger('submit');
               return false;
             }
-          } else if ((Util.isMac ? evt.metaKey : evt.ctrlKey) &&
+          }/* else if ((Util.isMac ? evt.metaKey : evt.ctrlKey) &&
                 (code == 'F'.charCodeAt(0) || code == 'G'.charCodeAt(0))) {
             // prevent Ctrl-F/Ctrl-G in forms
             evt.preventDefault();
             return false;
-          }
+          }*/
           return;
         }
 
@@ -1549,7 +1549,7 @@ var VisualizerUI = (function($, window, undefined) {
           autoPaging(true);
         } else if (evt.shiftKey && code === $.ui.keyCode.DOWN) {
           autoPaging(false);
-        } else if ((Util.isMac ? evt.metaKey : evt.ctrlKey) && code == 'F'.charCodeAt(0)) {
+        }/* else if ((Util.isMac ? evt.metaKey : evt.ctrlKey) && code == 'F'.charCodeAt(0)) {
           evt.preventDefault();
           showSearchForm();
         } else if (searchActive && (Util.isMac ? evt.metaKey : evt.ctrlKey) && code == 'G'.charCodeAt(0)) {
@@ -1558,7 +1558,7 @@ var VisualizerUI = (function($, window, undefined) {
         } else if (searchActive && (Util.isMac ? evt.metaKey : evt.ctrlKey) && code == 'K'.charCodeAt(0)) {
           evt.preventDefault();
           clearSearchResults();
-        }
+        }*/
       };
 
       var moveInFileBrowser = function(dir) {
