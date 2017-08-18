@@ -1665,10 +1665,10 @@ var AnnotatorUI = (function($, window, undefined) {
           if (offset >= theFocusNode.length) {
             offset = theFocusNode.length - 1;
           }
-          var endpos = theFocusNode.parentNode.getEndPositionOfChar(offset);
+          //var endpos = theFocusNode.parentNode.getEndPositionOfChar(offset);
           var svgpos = $(svg._svg).offset();
-          evt.clientX = endpos.x + svgpos.left - window.scrollX;
-          evt.clientY = endpos.y + svgpos.top - window.scrollY;
+          //evt.clientX = endpos.x + svgpos.left - window.scrollX;
+          //evt.clientY = endpos.y + svgpos.top - window.scrollY;
         }
 
         if (chunkIndexFrom !== undefined && chunkIndexTo !== undefined) {

@@ -134,18 +134,17 @@ var VisualizerUI = (function($, window, undefined) {
               identificationBoundaryOutputResult: $("input[name='identificationBoundaryOutputResult']:checked").val(),
               extractionOutputResult: $("input[name='extractionOutputResult']:checked").val(),
               fileType: $("input[name='fileType']:checked").val(),
-              lossType: $("input[name='lossType']:checked").val()
+              lossType: $("input[name='lossType']:checked").val(),
+              comments: $('#comments').val(),
             },
             function(response) {
 
              if (response.exception) {
-                console.log("Something went wrong!!");
+                alert("Something went wrong!!");
               } else if (!response.status) {
-                console.log("Something went wrong, empty response!!");;
+                alert("Something went wrong, empty response!!");;
               } else if(response.status == 'true'){
-
-                console.log("Recorded succesfully");
-
+                alert("Recorded succesfully");
               }
 
             }]);

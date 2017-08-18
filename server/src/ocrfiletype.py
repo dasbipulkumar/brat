@@ -10,7 +10,7 @@ def test(collection, document):
 
 
 def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationOutputResult,
-                          identificationBoundaryOutputResult, extractionOutputResult, fileType, lossType):
+                          identificationBoundaryOutputResult, extractionOutputResult, fileType, lossType, comments):
     path = path_join(real_directory(collection), 'qafunnelocrfiledetails')
     if not os.path.exists(path):
         os.mknod(path)
@@ -25,7 +25,7 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationO
             searchFlag = True
             print "%s" % (
                 json.dumps({"document": document, "ocrOutputResult": ocrOutputResult, "identificationOutputResult": identificationOutputResult,
-                            "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n'),
+                            "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType, "comments": comments}) + '\n'),
         else:
             print "%s" % (line),
 
@@ -35,7 +35,7 @@ def logOcrFileTypeDetails(collection, document, ocrOutputResult, identificationO
         with open(path, 'a') as file:
             file.write(json.dumps(
                 {"document": document, "ocrOutputResult": ocrOutputResult,"identificationOutputResult": identificationOutputResult,
-                             "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType}) + '\n')
+                             "identificationBoundaryOutputResult": identificationBoundaryOutputResult, "extractionOutputResult": extractionOutputResult, "fileType": fileType, "lossType": lossType, "comments": comments}) + '\n')
             file.close
 
     return {"status": 'true'}
@@ -55,7 +55,7 @@ def getOcrFileTypeDetails(collection, document):
                          "identificationOutputResult": loaded_r['identificationOutputResult'],
                          "identificationBoundaryOutputResult": loaded_r['identificationBoundaryOutputResult'],
                          "extractionOutputResult": loaded_r['extractionOutputResult'],
-                         "fileType": loaded_r['fileType'], "lossType": loaded_r['lossType']}
+                         "fileType": loaded_r['fileType'], "lossType": loaded_r['lossType'], "comments": loaded_r['comments']}
 
     #fileinput.close()
     return returnMap

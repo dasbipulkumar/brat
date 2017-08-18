@@ -3140,6 +3140,13 @@ Util.profileReport();
               else{
               $('input[name="lossType"][value="' + response.lossType.toString() + '"]').prop("checked", true);
               }
+
+              if(response.comments== undefined || response.comments==''){
+                $('#comments').text("");
+              }
+              else{
+                 $('#comments').text(response.comments.toString());
+              }
                 }
             }]);
 
@@ -3431,7 +3438,7 @@ Util.profileStart('before render');
           'dblclick', 'click'
       ]);
       registerHandlers($(document), [
-          'keydown', 'keypress',
+         // 'keydown', 'keypress',
           'touchstart', 'touchend'
       ]);
       //registerHandlers($(window), [
